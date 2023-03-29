@@ -17,38 +17,39 @@ export const usePiniaStore = defineStore("usePiniaStore", {
     dataMass: [],
     favourites: [],
     deals: [],
-    paid:[],
+    paid: [],
     activeType_All: false,
     activeType_Direct: false,
     activeType_Auction: false,
-    filterKey: '',
-    index: 0
+    filterKey: "",
+    index: 0,
   }),
-  getters: {
-  },
+  getters: {},
   actions: {
     async loadData() {
-      let response: MyData[] = await $fetch("https://myjsons.com/v/23ce916",);
-      this.dataMass = response;
+      let response: any = await $fetch(
+        "https://cors-anywhere.herokuapp.com/https://myjsons.com/v/23ce916"
+      );
+      this.dataMass = response.data;
     },
-    setActiveType(saleType:string) {
+    setActiveType(saleType: string) {
       if (saleType == "All") {
         this.activeType_All = true;
         this.activeType_Direct = false;
         this.activeType_Auction = false;
-        this.filterKey = 'All'
+        this.filterKey = "All";
       } else if (saleType == "Direct") {
         this.activeType_All = false;
         this.activeType_Direct = true;
         this.activeType_Auction = false;
-        this.filterKey = 'Разовая продажа'
+        this.filterKey = "Разовая продажа";
       } else {
         this.activeType_All = false;
         this.activeType_Direct = false;
         this.activeType_Auction = true;
-        this.filterKey = 'Аукцион'
+        this.filterKey = "Аукцион";
       }
-         localStorage.setItem('activeChapter',saleType)
+      localStorage.setItem("activeChapter", saleType);
     },
   },
 });
