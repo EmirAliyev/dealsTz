@@ -2,9 +2,6 @@
 export default defineNuxtConfig({
   css: ["@/assets/sass/style.sass"],
   modules: ["@pinia/nuxt"],
-  devServer: {
-    port: 8080
-  },
   typescript: {
     strict: true
   },
