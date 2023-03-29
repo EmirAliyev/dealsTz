@@ -28,7 +28,7 @@ export const usePiniaStore = defineStore("usePiniaStore", {
   },
   actions: {
     async loadData() {
-      let response: MyData[] = await $fetch("https://api.jsonserve.com/PObAh5");
+      let response: MyData[] = await $fetch("https://myjsons.com/v/23ce916");
       this.dataMass = response;
     },
     setActiveType(saleType:string) {
