@@ -28,8 +28,8 @@ export const usePiniaStore = defineStore("usePiniaStore", {
   },
   actions: {
     async loadData() {
-      let response: MyData[] = await $fetch("/api/dataBase",);
-      this.dataMass = response.data;
+      let response: MyData[] = await $fetch("https://myjsons.com/v/23ce916",);
+      this.dataMass = response;
     },
     setActiveType(saleType:string) {
       if (saleType == "All") {
