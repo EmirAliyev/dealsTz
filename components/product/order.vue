@@ -39,7 +39,7 @@ const addToFavourites = (product: any, idx: number) => {
 };
 
 const addToDealsOrPay = (product: any, idx: number) => {
-  if (route.path == "/deals") {
+  if (route.path == "/deals" || route.path == "/deals/") {
     product.paid = true
     localStorage.setItem("mydeals", JSON.stringify(store.deals));
   } else {
