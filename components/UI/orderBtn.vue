@@ -13,7 +13,8 @@ const {orderBtn, item} = defineProps(['orderBtn','item'])
 
 let newClass = ref('');
 let className = onMounted(()=>{
-   if(route.path=='/deals'){
+   console.log(route.path)
+   if(route.path=='/deals/'){
       newClass.value = 'product__order-pay'
    } else {
       newClass.value = 'product__order-btn'
