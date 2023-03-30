@@ -1,5 +1,5 @@
 <template lang="pug">
-button.product__order-paid(v-if= "item.paid && (route.path == '/deals' || route.path=='/deals')") Оплачено
+button.product__order-paid(v-if= "item.paid") Оплачено
 button(v-else :class="newClass") {{ orderBtn }}
 
 </template>
