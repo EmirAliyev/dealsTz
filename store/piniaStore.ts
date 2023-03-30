@@ -28,7 +28,12 @@ export const usePiniaStore = defineStore("usePiniaStore", {
   actions: {
     async loadData() {
       let response: any = await $fetch(
-        "https://cors-anywhere.herokuapp.com/https://myjsons.com/v/23ce916"
+        "https://proxy.cors.sh/https://myjsons.com/v/23ce916",
+        {
+          headers: {
+            "x-cors-api-key": "temp_f4844ffe7a9feef424c725c5309b03f7",
+          },
+        }
       );
       this.dataMass = response.data;
     },
