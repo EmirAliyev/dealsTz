@@ -1,5 +1,5 @@
 <template lang="pug">
-button.product__order-paid(v-if= "item.paid && route.path == '/deals' || '/deals/'") Оплачено
+button.product__order-paid(v-if= "item.paid && (route.path == '/deals' || '/deals/')") Оплачено
 button(v-else :class="newClass") {{ orderBtn }}
 
 </template>
@@ -14,7 +14,7 @@ const {orderBtn, item} = defineProps(['orderBtn','item'])
 let newClass = ref('');
 let className = onMounted(()=>{
    console.log(route)
-   if(route.path=='/deals/' || '/deals'){
+   if(route.path=='/deals/' || route.path=='/deals'){
       newClass.value = 'product__order-pay'
    } else {
       newClass.value = 'product__order-btn'
