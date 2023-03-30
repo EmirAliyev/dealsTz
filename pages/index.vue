@@ -8,23 +8,34 @@
 import { usePiniaStore } from "~~/store/piniaStore";
 const store = usePiniaStore();
 
-let loadInfo =onMounted(()=>{
+let loadInfo = onMounted(() => {
   store.loadData();
   let dataFav = JSON.parse(localStorage.getItem("myfavourites")!);
   store.favourites = dataFav ? dataFav : store.favourites;
-  let dataDeal =  JSON.parse(localStorage.getItem("mydeals")!)
-  store.deals = dataDeal ? dataDeal : store.deals
-})
+  let dataDeal = JSON.parse(localStorage.getItem("mydeals")!);
+  store.deals = dataDeal ? dataDeal : store.deals;
+});
 
 const filteredMass = computed(() => {
-  if (store.filterKey=="All") {
-    return store.dataMass;
-  } else {
+  if (store.inputValue.length > 0 && store.filterKey != "All") {
+    return store.dataMass.filter((item) => {
+      return (
+        item.title.toLowerCase().includes(store.inputValue.toLowerCase()) &&
+        item.saleType == store.filterKey
+      );
+    });
+  } else if (store.inputValue.length > 0 && store.filterKey == "All") {
+    return store.dataMass.filter((item) => {
+      return item.title.toLowerCase().includes(store.inputValue.toLowerCase());
+    });
+  } else if (store.inputValue.length == 0 && store.filterKey != "All") {
     return store.dataMass.filter((item) => {
       if (item.saleType == store.filterKey) {
         return item;
       }
     });
+  } else {
+    return store.dataMass;
   }
 });
 </script>

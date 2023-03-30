@@ -14,14 +14,25 @@ const loadData = onMounted(() => {
 });
 
 const filteredMass = computed(() => {
-  if (store.filterKey == "All") {
-    return store.favourites;
-  } else {
+  if (store.inputValue.length > 0 && store.filterKey != "All") {
+    return store.favourites.filter((item) => {
+      return (
+        item.title.toLowerCase().includes(store.inputValue.toLowerCase()) &&
+        item.saleType == store.filterKey
+      );
+    });
+  } else if (store.inputValue.length > 0 && store.filterKey == "All") {
+    return store.favourites.filter((item) => {
+      return item.title.toLowerCase().includes(store.inputValue.toLowerCase());
+    });
+  } else if (store.inputValue.length == 0 && store.filterKey != "All") {
     return store.favourites.filter((item) => {
       if (item.saleType == store.filterKey) {
         return item;
       }
     });
+  } else {
+    return store.favourites;
   }
 });
 </script>

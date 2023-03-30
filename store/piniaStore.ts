@@ -10,6 +10,7 @@ interface TaskState {
   activeType_Auction: boolean;
   filterKey: string;
   index: number;
+  inputValue: string;
 }
 
 export const usePiniaStore = defineStore("usePiniaStore", {
@@ -23,6 +24,7 @@ export const usePiniaStore = defineStore("usePiniaStore", {
     activeType_Auction: false,
     filterKey: "",
     index: 0,
+    inputValue: "",
   }),
   getters: {},
   actions: {
